@@ -1,0 +1,13 @@
+<h1 class="mb-3 text-2xl">
+    {% if index == "0" %}
+    WELCOME ABOARD
+    {% else %}
+    Paragraph {{ index }}
+    {% endif%}
+</h1>
+
+{% for line in paragraph.split("\n") %}
+{% if line|length %}
+    <p class="mb-3">{{ line | process_paragraph }}</p>
+{% endif %}
+{% endfor %}

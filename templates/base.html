@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Serif+Balinese&display=swap"
+			rel="stylesheet">
+
+		<title>GameBook</title>
+
+		<script src="https://unpkg.com/htmx.org@1.9.8"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+		
+		<style>
+			body {
+				font-family: 'Noto Serif Balinese', serif;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container mx-auto px-4 py-12">
+			<div class="lg:max-w-[50%] md:max-w-[80%] text-justify mx-auto">
+				<div
+					id="paragraph-content"
+					hx-trigger="reset from:body"
+					hx-get="/paragraph/0">
+					{% block content %}{% endblock %}
+				</div>
+
+				<hr class="mb-3">
+
+				<div>
+					<span
+						hx-trigger="steps from:body"
+						hx-get="/steps">
+						{% include "steps.html" %}
+					</span>
+					|
+					<button
+						class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+						hx-post="/reset"
+						hx-trigger="click"
+						hx-swap="none">
+						Reset game
+					</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
