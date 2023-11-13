@@ -17,7 +17,7 @@ def process_paragraph(raw_paragraph):
     raw_paragraph = re.sub(
         paragraph_pattern,
         r"""<button
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            class="font-medium text-blue-400 hover:underline"
             hx-get="/paragraph/\1"
             hx-trigger="click"
             hx-target="#paragraph-content"
